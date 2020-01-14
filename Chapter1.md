@@ -132,13 +132,19 @@ we have to create the constructor of App class and then call the constructor of 
 
 
 
-**setState**
+**setState()**
 
--> use to update the state that we have in class 
+-> use to **update the state** that we have in class 
 
-Ex. **this.setState({lat: 182});**
+```javascript
+this.setState({lat: 182});
+```
 
--> we **cannot** use this.state.lat = 128
+-> we **cannot** use 
+
+```javascript
+this.state.lat = 128
+```
 
 
 
@@ -148,7 +154,7 @@ Ex. **this.setState({lat: 182});**
 
 
 
-**Life cycle**
+###Life cycle
 
 - **constructor()**  "good place to do one time setup"
 - **render()** -> content visible on screen "only return JSX to show content"
@@ -161,17 +167,16 @@ Ex. **this.setState({lat: 182});**
 
 *we choose do data loading in componentDidMount, we can also do in constructor but it's not best practice
 
-**Constructor and state**
+
+
+###Constructor and state
 
 we can write constructor and declare state like this
 
 ``` javascript
 constructor(props) {
-
-​	super(props);
-
-​	this.state = {lat:null}
-
+	super(props);
+	this.state = {lat: null}
 }
 ```
 
@@ -179,13 +184,17 @@ constructor(props) {
 
 but we can also write just like this
 
+```javascript
 state = {lat: null}
+```
+
+
 
 ***It's the same code after babel convert it to ES5**
 
 
 
-**Default props**
+#### Default props
 
 -> we can set the default props value by using componentName.defaultProps = {};
 
@@ -197,9 +206,30 @@ Spinner.defaultProps = {
 
 
 
+####Avoid if condition in render function
+
+-> we should make the helper function which return JSX and then call it in render()
+
+```javascript
+renderContent(){
+  return <div>Hello render content</div>
+}
+render() {
+        return (
+            <div>
+                {this.renderContent()}
+            </div>
+        );
+}
+```
 
 
 
+**Benifit of class**
+
+- Easier code organization
+- Can use **state** (another React System) -> easier to handle user input
+- Understand **life cycle** events -> Easier to do thing when app first start
 
 
 
