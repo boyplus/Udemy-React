@@ -233,6 +233,110 @@ render() {
 
 
 
+**onChange props**
+
+-> this props in input tag will call the method
+
+```javascript
+onInputChange(event){
+  console.log('Input is '+event.taregt.value);
+}
+<input type="text" onChange={this.onInputChange}/>
+```
+
+
+
+**Altenate way to handle event**
+
+```javascript
+<input type="text" onChange={(event)=>console.log(event.target.value)}/>
+```
+
+
+
+**Props in tag (event)**
+
+-> we have to use call back function
+
+- onChange
+- onSubmit
+- onClick
+
+
+
+**Controlled VS Uncontrolled elements**
+
+-> we should write the contolr elements
+
+-> we use **setState()** and change the value in input to **this.state.message**
+
+-> the benefit is we can access value from state, but for uncontrolled elements we have to acces the value from the DOM
+
+-> use case, we can make the input to uppercase
+
+
+
+**Handling form submittal**
+
+-> we can prevent the reload when we subnit the form by follow this **(event.preventDefault())**
+
+```javascript
+onFormSubmit(event) {
+        event.preventDefault();
+}
+<form onSubmit={this.onFormSubmit}>
+```
+
+
+
+**Understanding this in Javascript**
+
+-> this keyword is refer to class itself
+
+-> this keyword is refer to the object which call that method
+
+
+
+**Fix problem about this (undefined)**
+
+- Use bind method
+
+  ```javascript
+  constructor(){
+    this.drive = this.drive.bind(this);
+  }
+  ```
+
+- Use arrow function instead of normal function
+
+  ```javascript
+  onFormSubmit = (event) =>{
+    console.log(this.state.term);
+  }
+  ```
+
+  **Arrow function** will help us to **share the this keyword to the same as that class** (not same as the object that call that method, because that object is undefined)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
