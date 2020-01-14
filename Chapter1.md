@@ -82,9 +82,15 @@ if we wan to create basic basic react app, we have to follow this 3 steps
 
 
 
-Pass data from parent to child
+**Pass data from parent to child**
 
-<Component name of the props = value>
+```javascript
+Component name of the props = value
+```
+
+```javascript
+<Spinner text="Loading..." />
+```
 
 
 
@@ -98,6 +104,110 @@ Pass data from parent to child
 
 - Functional components is good for simple centent
 - Class components is good for everything else
+
+
+
+**Class base component**
+
+There are three rules of creating class compoennt in react
+
+- Must be a javascript class
+- Must extends class (React.Component)
+- Must return method that return som JSX
+
+
+
+**Rules of state**
+
+- can be use only class component
+- when we update the state the class almost instantly be re redndered
+- state must be initialize when a component is created
+- state can only update by using **setState()**
+
+
+
+**Constructor of class component**
+
+we have to create the constructor of App class and then call the constructor of super class (parent) (React.Component) and send props to super class.
+
+
+
+**setState**
+
+-> use to update the state that we have in class 
+
+Ex. **this.setState({lat: 182});**
+
+-> we **cannot** use this.state.lat = 128
+
+
+
+**Conditionally rendering content**
+
+-> we can use if statement to check and return the differednt JSX
+
+
+
+**Life cycle**
+
+- **constructor()**  "good place to do one time setup"
+- **render()** -> content visible on screen "only return JSX to show content"
+- **componentDidMount()** -> Sit and wait for update "good for loading data"
+- **render()**
+- **componentDidUpdate()** -> Sit and wait until this component is not longer shown "good place to do more data loading when state/props change"
+- **componentWillUnmount()** -> "good place to do clean up ex. non-react stuff"
+
+
+
+*we choose do data loading in componentDidMount, we can also do in constructor but it's not best practice
+
+**Constructor and state**
+
+we can write constructor and declare state like this
+
+``` javascript
+constructor(props) {
+
+​	super(props);
+
+​	this.state = {lat:null}
+
+}
+```
+
+
+
+but we can also write just like this
+
+state = {lat: null}
+
+***It's the same code after babel convert it to ES5**
+
+
+
+**Default props**
+
+-> we can set the default props value by using componentName.defaultProps = {};
+
+```javascript
+Spinner.defaultProps = {
+    text: "Loading..."
+};
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
