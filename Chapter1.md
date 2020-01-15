@@ -317,11 +317,98 @@ onFormSubmit(event) {
 
   **Arrow function** will help us to **share the this keyword to the same as that class** (not same as the object that call that method, because that object is undefined)
 
+- Use arrow function inside of the tag
+
+  ```javascript
+  onFormSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.term);
+  }
+  <form onSubmit={(event)=>this.onFormSubmit()}>
+  ```
 
 
 
+***Props go down only** (we can only pass the props from parent to child)
 
 
+
+**Coomunicating Child to Parent**
+
+-> we can pass the callback function as a props from parent to child 
+
+```javascript
+//App.js 
+<SearchBar onMySubmit={this.onSearchSubmit} />
+```
+
+```javascript
+//Searchbar
+onFormSubmit = event => {
+  event.preventDefault();
+	console.log(this.state.term);
+	this.props.onMySubmit(this.state.term);
+};
+```
+
+
+
+**Fetching data**
+
+- Axios -> third party package
+- fetch - > function built into modern browser
+
+```markdown
+npm install --save axios
+```
+
+
+
+**Fetch data from Axios**
+
+```javascript
+//axios.get(path,object which contains about option);
+axios.get('https://api.unsplash.com/serach/photos',{
+  params{query: term},
+  headers{
+     Authorization: 'Client-ID your-access-key'
+  }
+});
+```
+
+
+
+**Getting the data from axios**
+
+- first method **"use then method"**
+
+  ```javascript
+  axios.get('https://api.unsplash.com/serach/photos',{
+    params{query: term},
+    headers{
+       Authorization: 'Client-ID your-access-key'
+    }
+  }).then((response)=>{console.log(response)});
+  ```
+
+- second method **"use async await"**
+
+  ```javascript
+  async onSearchSubmit(){
+    const response = await axios.get(...);
+   	console.log(response);
+  }
+  ```
+
+
+
+***Don't forget to make the arrow function when we want to use the this keyword of class**
+
+
+
+**The purpose of key in list**
+
+-> we should give the key for each items because when we have new item in render list, dom can decide which item is not currently in dom and then insert it by using key id. 
 
 
 
