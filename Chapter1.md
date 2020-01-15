@@ -84,11 +84,11 @@ if we wan to create basic basic react app, we have to follow this 3 steps
 
 **Pass data from parent to child**
 
-```javascript
+```react
 Component name of the props = value
 ```
 
-```javascript
+```react
 <Spinner text="Loading..." />
 ```
 
@@ -136,13 +136,13 @@ we have to create the constructor of App class and then call the constructor of 
 
 -> use to **update the state** that we have in class 
 
-```javascript
+```react
 this.setState({lat: 182});
 ```
 
 -> we **cannot** use 
 
-```javascript
+```react
 this.state.lat = 128
 ```
 
@@ -173,7 +173,7 @@ this.state.lat = 128
 
 we can write constructor and declare state like this
 
-``` javascript
+``` react
 constructor(props) {
 	super(props);
 	this.state = {lat: null}
@@ -184,7 +184,7 @@ constructor(props) {
 
 but we can also write just like this
 
-```javascript
+```react
 state = {lat: null}
 ```
 
@@ -198,7 +198,7 @@ state = {lat: null}
 
 -> we can set the default props value by using componentName.defaultProps = {};
 
-```javascript
+```react
 Spinner.defaultProps = {
     text: "Loading..."
 };
@@ -210,7 +210,7 @@ Spinner.defaultProps = {
 
 -> we should make the helper function which return JSX and then call it in render()
 
-```javascript
+```react
 renderContent(){
   return <div>Hello render content</div>
 }
@@ -237,19 +237,19 @@ render() {
 
 -> this props in input tag will call the method
 
-```javascript
+```react
 onInputChange(event){
   console.log('Input is '+event.taregt.value);
 }
-<input type="text" onChange={this.onInputChange}/>
+<input type="text" onChange={this.onInputChange} />
 ```
 
 
 
 **Altenate way to handle event**
 
-```javascript
-<input type="text" onChange={(event)=>console.log(event.target.value)}/>
+```react
+<input type="text" onChange={(event)=>console.log(event.target.value)} />
 ```
 
 
@@ -280,7 +280,7 @@ onInputChange(event){
 
 -> we can prevent the reload when we subnit the form by follow this **(event.preventDefault())**
 
-```javascript
+```react
 onFormSubmit(event) {
         event.preventDefault();
 }
@@ -301,7 +301,7 @@ onFormSubmit(event) {
 
 - Use bind method
 
-  ```javascript
+  ```react
   constructor(){
     this.drive = this.drive.bind(this);
   }
@@ -309,7 +309,7 @@ onFormSubmit(event) {
 
 - Use arrow function instead of normal function
 
-  ```javascript
+  ```react
   onFormSubmit = (event) =>{
     console.log(this.state.term);
   }
@@ -319,7 +319,7 @@ onFormSubmit(event) {
 
 - Use arrow function inside of the tag
 
-  ```javascript
+  ```react
   onFormSubmit(event) {
     event.preventDefault();
     console.log(this.state.term);
@@ -337,12 +337,12 @@ onFormSubmit(event) {
 
 -> we can pass the callback function as a props from parent to child 
 
-```javascript
+```react
 //App.js 
 <SearchBar onMySubmit={this.onSearchSubmit} />
 ```
 
-```javascript
+```react
 //Searchbar
 onFormSubmit = event => {
   event.preventDefault();
@@ -366,7 +366,7 @@ npm install --save axios
 
 **Fetch data from Axios**
 
-```javascript
+```react
 //axios.get(path,object which contains about option);
 axios.get('https://api.unsplash.com/serach/photos',{
   params{query: term},
@@ -382,7 +382,7 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 - first method **"use then method"**
 
-  ```javascript
+  ```react
   axios.get('https://api.unsplash.com/serach/photos',{
     params{query: term},
     headers{
@@ -393,7 +393,7 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 - second method **"use async await"**
 
-  ```javascript
+  ```react
   async onSearchSubmit(){
     const response = await axios.get(...);
    	console.log(response);
@@ -408,21 +408,73 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 **The purpose of key in list**
 
--> we should give the key for each items because when we have new item in render list, dom can decide which item is not currently in dom and then insert it by using key id. 
+-> we should give the key for each items because when we have new item in render list, dom can decide which item is not currently in dom and then insert it by using key id.
 
 
 
 
 
+**Map method (Full version)**
+
+```react
+const images = props.image.map((image)=>{
+  return (
+    <div>
+    	<img alt={image.description} key={image.id} scr={image.urls.regular}/>
+    </div>
+   );
+});
+```
 
 
 
+**Short form of map function**
+
+``` react
+const images = props.image.map(({description, urls, id})=>{
+  return (
+    <div>
+    	<img alt={description} key={id} scr={urls.regular}/>
+    </div>
+   );
+});
+```
 
 
 
+-> we can create the var which each value is the key of the var.
+
+```react
+const {description, urls} = image;
+```
 
 
 
+**Accessing DOM with Ref**
+
+-> we cteate constructor of class and the create ref with **React.createRef()** 
+
+-> then we pass the **ref** props 
+
+```react
+constructor(props){
+  super(props);
+  this.imageRef = React.createRef();
+}
+<img ref = {this.imageRef} />
+```
+
+
+
+**Problem about print the height of image**
+
+```react
+componentDidMount(){
+  console.log(this.imageRef.current.clientHeight);
+}
+```
+
+-> we got 0 from this statement, because after the render() the iamge **did not finish the load yet**, so that's why the clientHeight is 0
 
 
 
