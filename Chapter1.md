@@ -478,6 +478,28 @@ componentDidMount(){
 
 
 
+**Use load eventListener to solve the problem**
+
+-> callback function will be invoked when the image has been loaded
+
+```react
+this.imageRef.current.addEventListener('load',this.setSpans);
+setSpans(){
+  //some code to set span for each image
+}
+```
+
+
+
+**Short form of object**
+
+```react
+//long form
+this.setState({spans: spans});
+//short form
+this.setState({spans});
+```
+
 
 
 
