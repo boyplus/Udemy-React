@@ -1,11 +1,10 @@
 import React from 'react';
-
-const VideoList = (props) => {
-    return (
-        <div>
-            {props.videos.length}
-        </div>
-    );
+import VideoItem from './VideoItem';
+const VideoList = ({ videos, onVideoSelect }) => {
+    const renderedList = videos.map(video => {
+        return <VideoItem onVideoSelect={onVideoSelect} video={video} />;
+    });
+    return <div className="ui realxed divided list">{renderedList}</div>;
 };
 
 export default VideoList;
