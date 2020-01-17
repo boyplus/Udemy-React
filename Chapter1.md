@@ -502,9 +502,21 @@ this.setState({spans});
 
 
 
+**ES2015 Destructing**
 
+-> when we want to pass object to any method we can destruct it for short term and did not have to refer to the object for many times
 
+```javascript
+//old way
+const VidepList = (props) =>{
+  return <div>{props.videos.length}</div>
+}
 
+//destructing
+const VidepList = ({videos}) =>{
+  return <div>{videos.length}</div>
+}
+```
 
 
 
