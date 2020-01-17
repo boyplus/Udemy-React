@@ -84,11 +84,11 @@ if we wan to create basic basic react app, we have to follow this 3 steps
 
 **Pass data from parent to child**
 
-```react
+```javascript
 Component name of the props = value
 ```
 
-```react
+```javascript
 <Spinner text="Loading..." />
 ```
 
@@ -136,13 +136,13 @@ we have to create the constructor of App class and then call the constructor of 
 
 -> use to **update the state** that we have in class 
 
-```react
+```javascript
 this.setState({lat: 182});
 ```
 
 -> we **cannot** use 
 
-```react
+```javascript
 this.state.lat = 128
 ```
 
@@ -173,7 +173,7 @@ this.state.lat = 128
 
 we can write constructor and declare state like this
 
-``` react
+``` javascript
 constructor(props) {
 	super(props);
 	this.state = {lat: null}
@@ -184,7 +184,7 @@ constructor(props) {
 
 but we can also write just like this
 
-```react
+```javascript
 state = {lat: null}
 ```
 
@@ -198,7 +198,7 @@ state = {lat: null}
 
 -> we can set the default props value by using componentName.defaultProps = {};
 
-```react
+```javascript
 Spinner.defaultProps = {
     text: "Loading..."
 };
@@ -210,7 +210,7 @@ Spinner.defaultProps = {
 
 -> we should make the helper function which return JSX and then call it in render()
 
-```react
+```javascript
 renderContent(){
   return <div>Hello render content</div>
 }
@@ -237,7 +237,7 @@ render() {
 
 -> this props in input tag will call the method
 
-```react
+```javascript
 onInputChange(event){
   console.log('Input is '+event.taregt.value);
 }
@@ -248,7 +248,7 @@ onInputChange(event){
 
 **Altenate way to handle event**
 
-```react
+```javascript
 <input type="text" onChange={(event)=>console.log(event.target.value)} />
 ```
 
@@ -280,7 +280,7 @@ onInputChange(event){
 
 -> we can prevent the reload when we subnit the form by follow this **(event.preventDefault())**
 
-```react
+```javascript
 onFormSubmit(event) {
         event.preventDefault();
 }
@@ -301,7 +301,7 @@ onFormSubmit(event) {
 
 - Use bind method
 
-  ```react
+  ```javascript
   constructor(){
     this.drive = this.drive.bind(this);
   }
@@ -309,7 +309,7 @@ onFormSubmit(event) {
 
 - Use arrow function instead of normal function
 
-  ```react
+  ```javascript
   onFormSubmit = (event) =>{
     console.log(this.state.term);
   }
@@ -319,7 +319,7 @@ onFormSubmit(event) {
 
 - Use arrow function inside of the tag
 
-  ```react
+  ```javascript
   onFormSubmit(event) {
     event.preventDefault();
     console.log(this.state.term);
@@ -337,12 +337,12 @@ onFormSubmit(event) {
 
 -> we can pass the callback function as a props from parent to child 
 
-```react
+```javascript
 //App.js 
 <SearchBar onMySubmit={this.onSearchSubmit} />
 ```
 
-```react
+```javascript
 //Searchbar
 onFormSubmit = event => {
   event.preventDefault();
@@ -366,7 +366,7 @@ npm install --save axios
 
 **Fetch data from Axios**
 
-```react
+```javascript
 //axios.get(path,object which contains about option);
 axios.get('https://api.unsplash.com/serach/photos',{
   params{query: term},
@@ -382,7 +382,7 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 - first method **"use then method"**
 
-  ```react
+  ```javascript
   axios.get('https://api.unsplash.com/serach/photos',{
     params{query: term},
     headers{
@@ -393,7 +393,7 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 - second method **"use async await"**
 
-  ```react
+  ```javascript
   async onSearchSubmit(){
     const response = await axios.get(...);
    	console.log(response);
@@ -416,7 +416,7 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 **Map method (Full version)**
 
-```react
+```javascript
 const images = props.image.map((image)=>{
   return (
     <div>
@@ -430,7 +430,7 @@ const images = props.image.map((image)=>{
 
 **Short form of map function**
 
-``` react
+``` javascript
 const images = props.image.map(({description, urls, id})=>{
   return (
     <div>
@@ -444,7 +444,7 @@ const images = props.image.map(({description, urls, id})=>{
 
 -> we can create the var which each value is the key of the var.
 
-```react
+```javascript
 const {description, urls} = image;
 ```
 
@@ -456,7 +456,7 @@ const {description, urls} = image;
 
 -> then we pass the **ref** props 
 
-```react
+```javascript
 constructor(props){
   super(props);
   this.imageRef = React.createRef();
@@ -468,7 +468,7 @@ constructor(props){
 
 **Problem about print the height of image**
 
-```react
+```javascript
 componentDidMount(){
   console.log(this.imageRef.current.clientHeight);
 }
@@ -482,7 +482,7 @@ componentDidMount(){
 
 -> callback function will be invoked when the image has been loaded
 
-```react
+```javascript
 this.imageRef.current.addEventListener('load',this.setSpans);
 setSpans(){
   //some code to set span for each image
@@ -493,7 +493,7 @@ setSpans(){
 
 **Short form of object**
 
-```react
+```javascript
 //long form
 this.setState({spans: spans});
 //short form
