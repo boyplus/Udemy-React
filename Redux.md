@@ -18,9 +18,9 @@
 - Reducers (Departments)
 - State (Compiled department data)
 
-
-
-![Screen Shot 2020-01-18 at 4.18.01 PM](/Users/thanaporn/Desktop/Screen Shot 2020-01-18 at 4.18.01 PM.png)
+```
+![Image of Redux cycle](https://ibb.co/CWdgxsD)
+```
 
 
 
