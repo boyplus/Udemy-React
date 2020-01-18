@@ -18,21 +18,23 @@
 - Reducers (Departments)
 - State (Compiled department data)
 
-```
-![Image of Redux cycle](https://ibb.co/CWdgxsD)
-```
+
+
+![Screen Shot 2020-01-18 at 4.18.01 PM](/Users/thanaporn/Desktop/myGit/Udemy-React/lecture/pics/Screen Shot 2020-01-18 at 4.18.01 PM.png)
 
 
 
 **Overview the concept of redux**
 
--> we will store the data in one place (data center) and then each reducers/departments (function which do/update something with data) will ask for data from data center then update the data that depends on the type of action, after that reducer will return the brand new data to data center
+-> we will store the data in one place (data center) and then each reducers/departments (function which do/update something with data) will ask for data from data center then update the data that depends on the type of action, after that reducer will return the brand new data to data center.
 
 
 
 **Analogy of redux**
 
-![Screen Shot 2020-01-18 at 4.17.41 PM](/Users/thanaporn/Desktop/Screen Shot 2020-01-18 at 4.17.41 PM.png)
+![Screen Shot 2020-01-18 at 4.17.41 PM](/Users/thanaporn/Desktop/myGit/Udemy-React/lecture/pics/Screen Shot 2020-01-18 at 4.17.41 PM.png)
+
+
 
 
 
@@ -41,7 +43,7 @@
 -> the function which return palin javascript object
 
 ```javascript
-const createPolicy = (name,amount) =>{
+const createPolicy = (name, amount) =>{
   return {
     //action (javascript object)
   };
@@ -95,13 +97,55 @@ console.log(store.getState());
 
 -> to update the state (all data) in store
 
-
-
-**Song List Project**
-
+-> wait until there is another update from dispatch
 
 
 
+###Chapter 13: "Intergating React with redux"
+
+**React Cooperating with Redux**
+
+-> Redux is the library which can stand stand by it own self
+
+-> React-Redux is the library which can communicate react and redux
+
+```javascript
+npm install --save redux react-redux
+```
+
+
+
+**Song List project**
+
+-> consists of two components. 
+
+- SongList 
+- SongDetail
+
+
+
+**How React-Redux works**
+
+
+
+
+
+
+
+**Export defalut vs Export name**
+
+- export default someFunction -> we can export one function from this file
+- export name -> we can export many function from one file
+
+```javascript
+export const selectSong = (song) =>{
+  //some code
+}
+```
+
+```javascript
+import { selectSong } from '../actions';
+```
 
 
 
@@ -113,7 +157,9 @@ console.log(store.getState());
 
 
 
+**Chapter 14 Async action with redux thunk**
 
+https://github.com/StephenGrider/redux-code
 
 
 

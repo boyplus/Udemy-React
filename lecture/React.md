@@ -412,8 +412,6 @@ axios.get('https://api.unsplash.com/serach/photos',{
 
 
 
-
-
 **Map method (Full version)**
 
 ```javascript
@@ -430,11 +428,13 @@ const images = props.image.map((image)=>{
 
 **Short form of map function**
 
+-> we can destruct the image object
+
 ``` javascript
 const images = props.image.map(({description, urls, id})=>{
   return (
     <div>
-    	<img alt={description} key={id} scr={urls.regular}/>
+    	<img alt={description} key={id} src={urls.regular}/>
     </div>
    );
 });
