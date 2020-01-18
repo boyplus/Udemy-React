@@ -20,6 +20,22 @@
 
 
 
+![Screen Shot 2020-01-18 at 4.18.01 PM](/Users/thanaporn/Desktop/Screen Shot 2020-01-18 at 4.18.01 PM.png)
+
+
+
+**Overview the concept of redux**
+
+-> we will store the data in one place (data center) and then each reducers/departments (function which do/update something with data) will ask for data from data center then update the data that depends on the type of action, after that reducer will return the brand new data to data center
+
+
+
+**Analogy of redux**
+
+![Screen Shot 2020-01-18 at 4.17.41 PM](/Users/thanaporn/Desktop/Screen Shot 2020-01-18 at 4.17.41 PM.png)
+
+
+
 **1.Action creators**
 
 -> the function which return palin javascript object
@@ -31,8 +47,6 @@ const createPolicy = (name,amount) =>{
   };
 }
 ```
-
-
 
 
 
@@ -54,6 +68,12 @@ const createPolicy = (name,amount) =>{
 -> we usually do this in the last step, because we have to write the action creators, actions, reducers, combineReducers and create the store
 
 ```javascript
+const ourDepartments = combineReducers({
+  accounting: accounting,
+  policies: policies,
+  claimsHistory: claimsHistory
+  //ourDepartments is the set of reducers (function which do something with data)
+});
 const store = createStore(ourDepartments);
 store.dispatch(createPolicy('Alex',20));
 console.log(store.getState());
@@ -70,6 +90,14 @@ console.log(store.getState());
 -> we have to check what type of the action, then we consider what we will do about that type of action
 
 
+
+**5.State**
+
+-> to update the state (all data) in store
+
+
+
+**Song List Project**
 
 
 
