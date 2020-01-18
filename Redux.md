@@ -12,11 +12,12 @@
 
 **Redux cycle**
 
-- Action creator
-- Action
-- Dispatch
-- Reducers
-- State
+- Action creator (Person dropping of the form)
+- Action (the form)
+- Dispatch (form reciver)
+- Reducers (Departments)
+- State (Compiled department data)
+- 
 
 
 
