@@ -1,13 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions';
 class UserHeader extends React.Component {
-    componentDidMount() {
-        this.props.fetchUser(this.props.userId);
-    }
     render() {
-        return <div>User Header</div>;
+        const { user } = this.props;
+        if (!user) {
+            return null;
+        }
+        return <div className="header">{user.name}</div>;
     }
 }
+const mapStateToProp = (state, ownProps) => {
+    //owsProps is the same thing as props in our component
+    //mapStateToProp is the function which we can get the state from store to be
+    //the prop in our component
+    //then we user connect function and pass this function to it
+    return { user: state.users.find(user => user.id === ownProps.userId) };
+};
 
-export default connect(null, { fetchUser })(UserHeader);
+export default connect(mapStateToProp)(UserHeader);

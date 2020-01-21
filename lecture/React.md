@@ -3,23 +3,28 @@
 
 When we want to create react app we have to follow this
 
-1.install node
+1.install **node**
 
-2.install the create react app package -> **npm install -g create-react-app**
+2.install the **create react app package**
 
-3.create the react app -> **create-react-app project-name** (we can also use **npx create-react-app project-name**)
+```javascript
+npm install -g create-react-app
+```
+
+3.create the react app
+
+```javascript
+create-react-app project-name  //or
+npx create-react-app project-name
+```
 
 
 
-**create-react-app**
+When we use **create-react-app** it will install these packages (dependencies)
 
-When we use create-react-app it will install these packages (dependencies)
-
-**1.webpack**
-
-**2.Babel** -> compile the ES2015 and new to be ES5 (ES2015 -> babel -> ES5)
-
-**3.Dev server**
+- webpack
+- Babel -> compile the ES2015 and new to be ES5 (ES2015 -> babel -> ES5)
+- Dev server
 
 
 
@@ -61,6 +66,32 @@ if we wan to create basic basic react app, we have to follow this 3 steps
 
 - we write the JSX which look like HTML but it is ES2015, the we use babel to convert it to be ES5 js
 - we use double quotes for JSX properties and use single quotes for every where else
+
+
+
+Example of babel compile JSX to standard Javascript
+
+**JSX**
+
+```java
+const profile = (
+  <div>
+    <img src="avatar.png" className="profile" />
+    <h3>{[user.firstName, user.lastName].join(' ')}</h3>
+  </div>
+);
+```
+
+
+
+**Javascript**
+
+```javascript
+const profile = React.createElement("div", null,
+  React.createElement("img", { src: "avatar.png", className: "profile" }),
+  React.createElement("h3", null, [user.firstName, user.lastName].join(" "))
+);
+```
 
 
 
