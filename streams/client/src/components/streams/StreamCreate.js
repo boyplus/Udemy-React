@@ -13,23 +13,19 @@ class StreamCreate extends React.Component {
         }
     }
     renderInput = ({ input, label, meta }) => {
-        // console.log(meta);
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
                 <label>{label}</label>
-                {/* make all object in props as the props in input tag */}
-                {/* ex value={this.formProps.input.value} */}
                 <input {...input} autoComplete="off" />
                 {this.renderError(meta)}
             </div>
         );
     };
-    onSubmit = (formValues) => {
+    onSubmit = formValues => {
         this.props.createStream(formValues);
-    }
+    };
     render() {
-        // console.log(this.props);
         return (
             <div>
                 <form
