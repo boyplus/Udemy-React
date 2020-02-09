@@ -1,24 +1,21 @@
 {
   "streams": [
     {
-      "title": "hello",
-      "description": "1",
-      "id": 1
+      "title": "Programming 101",
+      "description": "boyplus",
+      "id": 8
     },
     {
-      "title": "hello",
-      "description": "123",
-      "id": 2
+      "title": "CSC105 Web App",
+      "description": "boyplus",
+      "userId": "103548395361329092941",
+      "id": 9
     },
     {
-      "title": "thanaphon",
-      "description": "test",
-      "id": 3
-    },
-    {
-      "title": "boy",
-      "description": "kk",
-      "id": 4
+      "title": "CSC103 Computer Architecture",
+      "description": "james",
+      "userId": "103548395361329092941",
+      "id": 10
     }
   ]
 }
